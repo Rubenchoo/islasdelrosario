@@ -1,0 +1,813 @@
+/* ================================================================
+   layout.css — Institución Educativa Islas del Rosario
+   Contiene: estilos del navbar fijo, footer y botones flotantes
+   (WhatsApp + subir). Se usa en TODAS las páginas.
+================================================================ */
+
+/* ════════════════════════════════════════════════════════════════
+   TOP BAR — barra superior de contacto rápido
+════════════════════════════════════════════════════════════════ */
+.top-bar {
+  background: var(--color-darker);
+  color: rgba(255,255,255,.75);
+  font-size: var(--font-xs);
+  font-weight: 500;
+  padding: 7px 0;
+  /* Ocultar en móvil para no saturar */
+}
+
+.top-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.top-bar__contacts {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.top-bar__contacts a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255,255,255,.7);
+  transition: var(--transition-fast);
+}
+
+.top-bar__contacts a:hover {
+  color: var(--color-primary);
+}
+
+.top-bar__contacts i {
+  color: var(--color-primary);
+  font-size: .9rem;
+}
+
+.top-bar__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.top-bar__cta a {
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.top-bar__cta a:hover {
+  color: var(--color-white);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   NAVBAR — fijo, con sombra al hacer scroll
+════════════════════════════════════════════════════════════════ */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  height: var(--nav-height);
+  transition: box-shadow .35s ease, background .35s ease;
+}
+
+/* Cuando el usuario hace scroll, sombra más pronunciada */
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar__inner {
+  height: 100%;
+  /* 3 columnas iguales: logo | links | redes */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+/* ── Logo (columna izquierda) ─────────────────────────────── */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: start;
+  text-decoration: none;
+}
+
+.navbar__logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Texto de respaldo si no hay imagen */
+.navbar__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.navbar__logo-text strong {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  letter-spacing: -.01em;
+}
+
+.navbar__logo-text span {
+  font-size: .68rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ── Menú central (columna media) ────────────────────────── */
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  /* Ya está en columna auto → se centra automáticamente */
+}
+
+.navbar__nav a {
+  display: block;
+  padding: 8px 13px;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Subrayado animado al hover */
+.navbar__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: transform .3s ease;
+}
+
+.navbar__nav a:hover,
+.navbar__nav a.active {
+  color: var(--color-primary);
+  background: rgba(0,168,232,.06);
+}
+
+.navbar__nav a:hover::after,
+.navbar__nav a.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ── Redes sociales (columna derecha) ─────────────────────── */
+.navbar__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  justify-self: end;
+}
+
+.navbar__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--color-secondary);
+  background: rgba(0,126,167,.08);
+  font-size: 1rem;
+  transition: var(--transition-base);
+}
+
+.navbar__social a:hover {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,168,232,.35);
+}
+
+/* ── Botón hamburguesa (solo móvil) ──────────────────────── */
+.navbar__toggle {
+  display: none;        /* se activa desde media query */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transition: var(--transition-fast);
+}
+
+.navbar__toggle:hover {
+  background: var(--color-light);
+}
+
+/* Las 3 barras del hamburger */
+.navbar__toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-secondary);
+  border-radius: var(--radius-full);
+  transition: transform .35s ease, opacity .25s ease, width .25s ease;
+}
+
+/* Transformación en X al abrir el menú */
+.navbar__toggle.is-open .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__toggle.is-open .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.navbar__toggle.is-open .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Menú desplegable móvil ──────────────────────────────── */
+.navbar__mobile-menu {
+  /* Oculto por defecto con height 0 para animación suave */
+  max-height: 0;
+  overflow: hidden;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  transition: max-height .45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Sombra suave al desplegarse */
+  box-shadow: 0 8px 24px rgba(0,53,77,.1);
+}
+
+.navbar__mobile-menu.is-open {
+  /* Altura máxima generosa para que quepan todos los enlaces */
+  max-height: 420px;
+}
+
+.navbar__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md) 0;
+}
+
+.navbar__mobile-nav a {
+  padding: 12px var(--space-lg);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  border-left: 3px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.navbar__mobile-nav a:hover,
+.navbar__mobile-nav a.active {
+  color: var(--color-primary);
+  background: rgba(0,168,232,.05);
+  border-left-color: var(--color-primary);
+}
+
+.navbar__mobile-social {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-sm);
+}
+
+.navbar__mobile-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0,168,232,.1);
+  color: var(--color-primary);
+  font-size: 1rem;
+  transition: var(--transition-base);
+}
+
+.navbar__mobile-social a:hover {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════════════════════════ */
+.footer {
+  background: var(--gradient-dark);
+  color: rgba(255,255,255,.75);
+  font-size: var(--font-sm);
+  border-top: 4px solid var(--color-primary);
+}
+
+/* Ola del footer eliminada — reemplazada por borde superior */
+.footer__wave { display: none; }
+
+/* Contenido principal del footer */
+.footer__main {
+  padding: var(--space-3xl) 0 var(--space-2xl);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+/* Columna de marca */
+.footer__brand {}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--space-lg);
+}
+
+.footer__logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);  /* Logo blanco */
+  opacity: .85;
+}
+
+.footer__logo-text strong {
+  display: block;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+.footer__logo-text span {
+  font-size: .72rem;
+  color: rgba(255,255,255,.5);
+}
+
+.footer__desc {
+  line-height: 1.7;
+  color: rgba(255,255,255,.6);
+  margin-bottom: var(--space-lg);
+}
+
+/* Redes sociales en footer */
+.footer__social {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.footer__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.7);
+  font-size: 1rem;
+  transition: var(--transition-base);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.footer__social a:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Columnas de links */
+.footer__col-title {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid rgba(0,168,232,.35);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__links a {
+  color: rgba(255,255,255,.6);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: var(--transition-fast);
+}
+
+.footer__links a i {
+  color: var(--color-primary);
+  font-size: .75rem;
+}
+
+.footer__links a:hover {
+  color: var(--color-white);
+  padding-left: 4px;
+}
+
+/* Horarios */
+.footer__schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__schedule-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  color: rgba(255,255,255,.6);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.footer__schedule-item:last-child {
+  border-bottom: none;
+}
+
+.footer__schedule-item strong {
+  color: rgba(255,255,255,.85);
+  font-weight: 500;
+}
+
+/* Contacto en footer */
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  color: rgba(255,255,255,.6);
+}
+
+.footer__contact-item i {
+  color: var(--color-primary);
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Barra inferior del footer */
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: var(--space-lg) 0;
+}
+
+.footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.footer__copy {
+  color: rgba(255,255,255,.45);
+  font-size: var(--font-xs);
+}
+
+.footer__copy a {
+  color: var(--color-primary);
+  transition: var(--transition-fast);
+}
+
+.footer__copy a:hover {
+  color: var(--color-white);
+}
+
+.footer__bottom-links {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.footer__bottom-links a {
+  color: rgba(255,255,255,.45);
+  font-size: var(--font-xs);
+  transition: var(--transition-fast);
+}
+
+.footer__bottom-links a:hover {
+  color: var(--color-primary);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   BOTONES FLOTANTES — WhatsApp y Subir al inicio
+════════════════════════════════════════════════════════════════ */
+.floating-buttons {
+  position: fixed;
+  right: 22px;
+  bottom: 24px;
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #25d366;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  box-shadow: 0 4px 18px rgba(37,211,102,.45);
+  transition: var(--transition-base);
+  text-decoration: none;
+  animation: waPulse 3s ease-in-out infinite;
+}
+
+.btn-whatsapp:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 26px rgba(37,211,102,.55);
+}
+
+/* Tooltip al lado del botón */
+.btn-whatsapp::before {
+  content: '¡Escríbenos!';
+  position: absolute;
+  right: 62px;
+  background: var(--color-darker);
+  color: var(--color-white);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: var(--transition-base);
+  pointer-events: none;
+}
+
+.btn-whatsapp:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 4px 18px rgba(37,211,102,.45); }
+  50%       { box-shadow: 0 4px 28px rgba(37,211,102,.7);  }
+}
+
+/* Botón Subir */
+.btn-scroll-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+  cursor: pointer;
+  /* Oculto hasta que el usuario haga scroll */
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+.btn-scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.btn-scroll-top:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MODAL DE PUBLICIDAD — popup al cargar la página
+════════════════════════════════════════════════════════════════ */
+.ad-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(4px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  animation: fadeIn .4s ease;
+  /* Oculto con clase; JS lo controla */
+}
+
+.ad-modal-overlay.hidden {
+  display: none;
+}
+
+.ad-modal {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 24px;
+  /* sin overflow:hidden para que el botón X pueda salir del contenedor si hace falta */
+  box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  animation: scaleIn .45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: var(--color-white);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Wrapper de la imagen — contiene imagen + botón X sin tapar la imagen */
+.ad-modal__img-wrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden; /* recorta la imagen con los bordes del wrapper */
+  line-height: 0;   /* evita espacio extra debajo de la imagen */
+}
+
+/* Botón X — pegado a la esquina del wrapper de la imagen, NO encima */
+.ad-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-lighter);
+  color: var(--color-dark);
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  align-self: flex-end;   /* lo empuja a la derecha dentro del flex column */
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.ad-modal__close:hover {
+  background: var(--color-light);
+  transform: scale(1.1);
+}
+
+/* Imagen de la publicidad */
+.ad-modal__img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Placeholder mientras no hay imagen real */
+.ad-modal__placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--gradient-primary);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  color: var(--color-white);
+  font-size: var(--font-lg);
+  font-weight: 700;
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.ad-modal__placeholder i {
+  font-size: 3rem;
+  opacity: .7;
+}
+
+.ad-modal__footer {
+  background: var(--color-white);
+  padding: 0 var(--space-sm) var(--space-sm);
+  text-align: center;
+}
+
+.ad-modal__title {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.ad-modal__desc {
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* Botón de la publicidad → abre en nueva pestaña */
+.ad-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: var(--font-sm);
+  transition: var(--transition-base);
+}
+
+.ad-modal__btn:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,168,232,.4);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE — Layout navs y footer
+════════════════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  /* Ocultar menú y social del nav; mostrar toggle */
+  .navbar__nav,
+  .navbar__social {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: flex;
+    justify-self: end;
+  }
+
+  .navbar__inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  /* Footer en 2 columnas */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 600px) {
+  .top-bar { display: none; }
+
+  /* Footer en 1 columna */
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .floating-buttons {
+    right: 14px;
+    bottom: 16px;
+  }
+}

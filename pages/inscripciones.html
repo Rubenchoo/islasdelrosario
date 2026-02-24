@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proceso de inscripciones para la I.E. Islas del Rosario. Conoce los requisitos, pasos y completa tu solicitud.">
+  <title>Inscripciones — I.E. Islas del Rosario</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<div class="page-loader" id="pageLoader"><div class="loader-wave"><span></span><span></span><span></span><span></span><span></span></div><p class="loader-text">Cargando...</p></div>
+<div id="bubblesContainer" aria-hidden="true"></div>
+
+<!-- Modal publicidad -->
+<div class="ad-modal-overlay hidden" id="adModal" role="dialog" aria-modal="true">
+  <div class="ad-modal">
+    <button class="ad-modal__close" id="adModalClose" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+    <div class="ad-modal__img-wrap">
+      <img src="../img/niños.jpeg" alt="Publicidad I.E. Islas del Rosario" class="ad-modal__img">
+    </div>
+    <div class="ad-modal__footer">
+      <h3 class="ad-modal__title">¡Inscripciones Abiertas 2025!</h3>
+      <p class="ad-modal__desc">Asegura el cupo de tu hijo/a. Cupos limitados.</p>
+      <a href="#" class="ad-modal__btn" id="adModalAction"><i class="bi bi-arrow-right-circle-fill"></i> Ver información</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     BARRA SUPERIOR DE INFORMACIÓN
+══════════════════════════════════════════════════════════════ -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar__inner">
+      <div class="top-bar__contacts">
+        <a href="tel:+573128149500">
+          <i class="bi bi-telephone-fill"></i>
+          (+57) 312 814 9500
+        </a>
+        <a href="mailto:i.e.islasdelrosario@sedcartagena.gov.co">
+          <i class="bi bi-envelope-fill"></i>
+          i.e.islasdelrosario@sedcartagena.gov.co
+        </a>
+        <span><i class="bi bi-geo-alt-fill" style="color:var(--color-primary)"></i> Isla grande, Islas del rosario, Cartagena</span>
+      </div>
+      <div class="top-bar__cta">
+        <i class="bi bi-clock-fill" style="color:var(--color-primary)"></i>
+        Mañana: 6:30–12:30 | Tarde: 12:30–5:30 p.m.
+        <a href="inscripciones.html">Inscripciones →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <nav class="navbar__inner">
+      <a href="../index.html" class="navbar__logo">
+        <img src="../img/logo/logo.png" alt="Logo" class="navbar__logo-img" onerror="this.style.display='none'">
+        <div class="navbar__logo-text"><strong>I.E. Islas del Rosario</strong><span>Educación con raíces, futuro con alas</span></div>
+      </a>
+      <ul class="navbar__nav">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="sedes.html">Sedes</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="inscripciones.html" class="active">Inscripciones</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="navbar__social">
+        <a href="https://facebook.com" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+        <a href="https://tiktok.com"   target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+      </div>
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="navbar__toggle-bar"></span><span class="navbar__toggle-bar"></span><span class="navbar__toggle-bar"></span>
+      </button>
+    </nav>
+  </div>
+  <div class="navbar__mobile-menu" id="mobileMenu">
+    <ul class="navbar__mobile-nav">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="sedes.html">Sedes</a></li>
+      <li><a href="equipo.html">Equipo</a></li>
+      <li><a href="inscripciones.html" class="active">Inscripciones</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="navbar__mobile-social">
+      <a href="https://facebook.com" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+      <a href="https://tiktok.com"   target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- Hero subpágina -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <nav class="breadcrumb"><a href="../index.html">Inicio</a><i class="bi bi-chevron-right"></i><span>Inscripciones</span></nav>
+      <span class="page-hero__tag"><i class="bi bi-pencil-fill"></i> Año escolar 2025</span>
+      <h1 class="page-hero__title">Inscripciones Abiertas</h1>
+      <p class="page-hero__desc">Asegura el futuro de tu hijo/a. Cupos limitados para todos los niveles. ¡No dejes pasar la oportunidad!</p>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:-1px;left:0;right:0;line-height:0;z-index:5;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--color-lighter)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     AVISO DE INSCRIPCIONES — Banner informativo
+══════════════════════════════════════════════════════════════ -->
+<section style="background:var(--color-light);padding:var(--space-xl) 0;">
+  <div class="container">
+    <div style="background:rgba(0,168,232,.1);border:2px solid rgba(0,168,232,.3);border-radius:var(--radius-lg);padding:var(--space-xl);display:flex;align-items:center;gap:var(--space-lg);flex-wrap:wrap;" class="reveal">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;flex-shrink:0;">
+        <i class="bi bi-info-circle-fill"></i>
+      </div>
+      <div style="flex:1;min-width:220px;">
+        <strong style="display:block;color:var(--color-dark);font-size:var(--font-md);margin-bottom:4px;">Período de inscripciones 2025</strong>
+        <p style="color:var(--color-text-muted);font-size:var(--font-sm);">Las inscripciones para el año escolar 2025 están abiertas del <strong>1 de noviembre</strong> al <strong>15 de diciembre de 2024</strong>. Llevar los documentos requeridos a la secretaría en horario de atención.</p>
+      </div>
+      <a href="tel:+573128149500" class="btn btn-primary" style="flex-shrink:0;"><i class="bi bi-telephone-fill"></i> Llamar ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PROCESO E INSCRIPCIÓN (sin formulario)
+══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--color-white)">
+  <div class="container">
+    <div style="max-width:720px;margin:0 auto;">
+
+      <!-- Pasos del proceso -->
+      <div class="pasos reveal">
+        <h2 class="pasos__title">¿Cómo inscribirse?</h2>
+
+        <div class="paso-item">
+          <div class="paso-num">1</div>
+          <div class="paso-content">
+            <h3 class="paso-content__title">Reúne los documentos</h3>
+            <p class="paso-content__text">Prepara todos los documentos requeridos según el nivel educativo al que aplica. Revisa la lista de requisitos más abajo.</p>
+          </div>
+        </div>
+
+        <div class="paso-item">
+          <div class="paso-num">2</div>
+          <div class="paso-content">
+            <h3 class="paso-content__title">Visita la secretaría</h3>
+            <p class="paso-content__text">Dirígete a la institución con los documentos originales y en fotocopia en horario de secretaría (Lun – Vie: 7:00 a.m. – 5:00 p.m.).</p>
+          </div>
+        </div>
+
+        <div class="paso-item">
+          <div class="paso-num">3</div>
+          <div class="paso-content">
+            <h3 class="paso-content__title">Confirmación del cupo</h3>
+            <p class="paso-content__text">Una vez revisados los documentos, recibirás confirmación del cupo asignado por correo electrónico o llamada telefónica en un plazo de 3 días hábiles.</p>
+          </div>
+        </div>
+
+        <div class="paso-item">
+          <div class="paso-num">4</div>
+          <div class="paso-content">
+            <h3 class="paso-content__title">Matrícula oficial</h3>
+            <p class="paso-content__text">Con el cupo confirmado, regresa a secretaría para formalizar la matrícula. El proceso tiene lugar en enero del año escolar correspondiente.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requisitos documentales -->
+      <div class="requisitos reveal">
+        <h3 class="requisitos__title"><i class="bi bi-folder2-open"></i> Documentos requeridos</h3>
+
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>Registro civil de nacimiento (original y fotocopia)</div>
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>Tarjeta de identidad (para mayores de 7 años)</div>
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>Boletín de notas del año anterior (original)</div>
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>Certificado de paz y salvo del colegio anterior</div>
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>Carné de vacunación actualizado (preescolar y primaria)</div>
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>2 fotos tamaño 3×4 fondo blanco</div>
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>Fotocopia de cédula del acudiente</div>
+        <div class="requisito-item"><i class="bi bi-check-circle-fill"></i>Certificado de SISBEN (si aplica)</div>
+      </div>
+
+      <!-- CTA contacto directo -->
+      <div style="margin-top:var(--space-2xl);background:var(--color-light);border-radius:var(--radius-lg);padding:var(--space-xl);text-align:center;" class="reveal">
+        <p style="font-size:var(--font-md);color:var(--color-text-muted);margin-bottom:var(--space-lg);">
+          ¿Tienes dudas sobre el proceso? Contáctanos directamente.
+        </p>
+        <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;">
+          <a href="https://wa.me/573128149500?text=Hola,%20quiero%20información%20sobre%20inscripciones" target="_blank" rel="noopener" class="btn btn-primary">
+            <i class="bi bi-whatsapp"></i> WhatsApp 312 814 9500
+          </a>
+          <a href="contacto.html" class="btn btn-outline-primary">
+            <i class="bi bi-envelope-fill"></i> Ver contacto
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PREGUNTAS FRECUENTES
+══════════════════════════════════════════════════════════════ -->
+<section class="section section--light" aria-labelledby="faq-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-question-circle-fill"></i> FAQ</span>
+      <h2 class="section-title" id="faq-title">Preguntas frecuentes</h2>
+    </header>
+
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-md);">
+
+      <!-- Cada FAQ es un details/summary para que sea interactivo sin JS extra -->
+      <details class="reveal delay-1" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;">
+        <summary style="padding:var(--space-lg) var(--space-xl);font-weight:700;color:var(--color-dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;gap:var(--space-md);">
+          ¿El colegio es gratuito? <i class="bi bi-chevron-down" style="color:var(--color-primary);flex-shrink:0;transition:transform .3s ease;"></i>
+        </summary>
+        <div style="padding:0 var(--space-xl) var(--space-xl);color:var(--color-text-muted);font-size:var(--font-sm);line-height:1.7;">
+          Sí. La I.E. Islas del Rosario es una institución educativa oficial y por lo tanto la educación es completamente gratuita para todos los niveles de preescolar a undécimo grado, según lo establece la Ley 115 de 1994 y las normas vigentes del Ministerio de Educación Nacional.
+        </div>
+      </details>
+
+      <details class="reveal delay-2" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;">
+        <summary style="padding:var(--space-lg) var(--space-xl);font-weight:700;color:var(--color-dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;gap:var(--space-md);">
+          ¿Cuándo inician las clases? <i class="bi bi-chevron-down" style="color:var(--color-primary);flex-shrink:0;"></i>
+        </summary>
+        <div style="padding:0 var(--space-xl) var(--space-xl);color:var(--color-text-muted);font-size:var(--font-sm);line-height:1.7;">
+          El año escolar 2025 inicia el 20 de enero. El calendario académico cuenta con dos semestres. Puedes descargar el calendario completo en secretaría o consultarlo con la coordinación académica.
+        </div>
+      </details>
+
+      <details class="reveal delay-3" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;">
+        <summary style="padding:var(--space-lg) var(--space-xl);font-weight:700;color:var(--color-dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;gap:var(--space-md);">
+          ¿Tienen transporte escolar? <i class="bi bi-chevron-down" style="color:var(--color-primary);flex-shrink:0;"></i>
+        </summary>
+        <div style="padding:0 var(--space-xl) var(--space-xl);color:var(--color-text-muted);font-size:var(--font-sm);line-height:1.7;">
+          Contamos con un programa de transporte escolar subsidiado para estudiantes de zonas rurales y de difícil acceso. Para solicitar el servicio, comunícate con la secretaría al inicio del año escolar. Las rutas y disponibilidad dependen del presupuesto asignado por el municipio.
+        </div>
+      </details>
+
+      <details class="reveal delay-4" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;">
+        <summary style="padding:var(--space-lg) var(--space-xl);font-weight:700;color:var(--color-dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;gap:var(--space-md);">
+          ¿Tienen programa de bilingüismo? <i class="bi bi-chevron-down" style="color:var(--color-primary);flex-shrink:0;"></i>
+        </summary>
+        <div style="padding:0 var(--space-xl) var(--space-xl);color:var(--color-text-muted);font-size:var(--font-sm);line-height:1.7;">
+          Sí. Desde grado 3.° hasta 11.° contamos con clases de inglés de intensidad horaria ampliada. En secundaria, algunas materias tienen componentes de inmersión en inglés. Nuestros estudiantes participan anualmente en olimpiadas de inglés a nivel departamental.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" fill="var(--color-lighter)"/>
+    </svg>
+  </div>
+  <div class="footer__main">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo"><img src="../img/logo/logo.png" alt="Logo" onerror="this.style.display='none'"><div class="footer__logo-text"><strong>I.E. Islas del Rosario</strong><span>Educación con raíces, futuro con alas</span></div></div>
+          <p class="footer__desc">Institución educativa oficial comprometida con la excelencia académica Res. 0222 del 14 de junio de 2011.</p>
+          <div class="footer__social">
+            <a href="https://facebook.com" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+            <a href="https://tiktok.com"   target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <nav><h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links">
+            <li><a href="../index.html"><i class="bi bi-chevron-right"></i> Inicio</a></li>
+            <li><a href="nosotros.html"><i class="bi bi-chevron-right"></i> Nosotros</a></li>
+            <li><a href="sedes.html"><i class="bi bi-chevron-right"></i> Sedes</a></li>
+            <li><a href="equipo.html"><i class="bi bi-chevron-right"></i> Equipo</a></li>
+            <li><a href="inscripciones.html"><i class="bi bi-chevron-right"></i> Inscripciones</a></li>
+            <li><a href="contacto.html"><i class="bi bi-chevron-right"></i> Contacto</a></li>
+          </ul>
+        </nav>
+        <div><h3 class="footer__col-title">Horarios secretaría</h3>
+          <div class="footer__schedule">
+            <div class="footer__schedule-item"><span>Lunes – Viernes</span><strong>7:00 – 17:00</strong></div>
+            <div class="footer__schedule-item"><span>Sábados</span><strong>8:00 – 12:00</strong></div>
+            <div class="footer__schedule-item"><span>Domingos</span><strong>Cerrado</strong></div>
+          </div>
+        </div>
+        <div><h3 class="footer__col-title">Contacto</h3>
+          <div class="footer__contact">
+            <div class="footer__contact-item"><i class="bi bi-geo-alt-fill"></i><span>Isla del Rosario, Isla Grande, Sector Petare, Cartagena</span></div>
+            <div class="footer__contact-item"><i class="bi bi-telephone-fill"></i><a href="tel:+573128149500">312 814 9500</a></div>
+            <div class="footer__contact-item"><i class="bi bi-whatsapp"></i><a href="https://wa.me/573128149500" target="_blank" rel="noopener">WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p class="footer__copy">&copy; 2025 <a href="../index.html">I.E. Islas del Rosario</a>. Todos los derechos reservados.</p>
+        <nav class="footer__bottom-links"><a href="#">Privacidad</a><a href="#">Términos</a></nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-buttons">
+  <a href="https://wa.me/573128149500" class="btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+  <button class="btn-scroll-top" id="btnScrollTop" aria-label="Subir"><i class="bi bi-chevron-up"></i></button>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

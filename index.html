@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Institución Educativa Islas del Rosario — Educación oficial en el Archipiélago del Rosario, Cartagena. Preescolar, primaria, secundaria y media con énfasis en ecoturismo.">
+  <title>Inicio — I.E. Islas del Rosario</title>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- CSS del proyecto (orden importante) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="icon" type="image/jpg" href="img/logotip.jpg">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     LOADER — se oculta cuando la página termina de cargar
+══════════════════════════════════════════════════════════════ -->
+<div class="page-loader" id="pageLoader" role="status" aria-label="Cargando página">
+  <div class="loader-wave">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <p class="loader-text">Cargando...</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     BURBUJAS MARÍTIMAS — decoración de fondo fija
+══════════════════════════════════════════════════════════════ -->
+<div id="bubblesContainer" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL DE PUBLICIDAD
+     Para DESACTIVAR: ir a js/main.js → AD_ENABLED = false
+     Para cambiar la imagen: reemplazar la fuente en <img>
+     Para cambiar el enlace: ir a js/main.js → AD_URL
+══════════════════════════════════════════════════════════════ -->
+<div class="ad-modal-overlay hidden" id="adModal" role="dialog" aria-modal="true" aria-label="Publicidad">
+  <div class="ad-modal">
+    <!-- Botón X para cerrar sin ir al enlace -->
+    <button class="ad-modal__close" id="adModalClose" aria-label="Cerrar publicidad">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <!-- IMAGEN DE PUBLICIDAD — reemplazar src con la imagen real -->
+    <div class="ad-modal__img-wrap">
+      <img src="img/niños.jpeg" alt="Publicidad I.E. Islas del Rosario" class="ad-modal__img">
+    </div>
+
+    <div class="ad-modal__footer">
+      <h3 class="ad-modal__title">¡Inscripciones Abiertas 2026!</h3>
+      <p class="ad-modal__desc">Asegura el cupo de tu hijo/a. Cupos limitados para todos los niveles.</p>
+      <!-- Este botón abre AD_URL en nueva pestaña (configurar en main.js) -->
+      <a href="#" class="ad-modal__btn" id="adModalAction">
+        <i class="bi bi-arrow-right-circle-fill"></i>
+        Ver más información
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     BARRA SUPERIOR DE INFORMACIÓN
+══════════════════════════════════════════════════════════════ -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar__inner">
+      <div class="top-bar__contacts">
+        <a href="tel:+573128149500">
+          <i class="bi bi-telephone-fill"></i>
+          (+57) 312 814 9500
+        </a>
+        <a href="mailto:i.e.islasdelrosario@sedcartagena.gov.co">
+          <i class="bi bi-envelope-fill"></i>
+          i.e.islasdelrosario@sedcartagena.gov.co
+        </a>
+        <span><i class="bi bi-geo-alt-fill" style="color:var(--color-primary)"></i> Isla grande, Islas del rosario, Cartagena</span>
+      </div>
+      <div class="top-bar__cta">
+        <i class="bi bi-clock-fill" style="color:var(--color-primary)"></i>
+        Mañana: 6:30–12:30 | Tarde: 12:30–5:30 p.m.
+        <a href="pages/inscripciones.html">Inscripciones →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR FIJO
+══════════════════════════════════════════════════════════════ -->
+<header class="navbar" id="navbar" role="banner">
+  <div class="container">
+    <nav class="navbar__inner" aria-label="Navegación principal">
+
+      <!-- Logo (izquierda) — reemplazar con /img/logo/logo.png -->
+      <a href="index.html" class="navbar__logo" aria-label="Ir al inicio">
+        <img src="img/logo.jpeg" alt="Logo I.E. Islas del Rosario" class="navbar__logo-img"
+             onerror="this.style.display='none'">
+        <div class="navbar__logo-text">
+          <strong>I.E. Islas del Rosario</strong>
+          <span>Educación con raíces, futuro con alas</span>
+        </div>
+      </a>
+
+      <!-- Menú central (desktop) -->
+      <ul class="navbar__nav" role="list">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="pages/nosotros.html">Nosotros</a></li>
+        <li><a href="pages/sedes.html">Sedes</a></li>
+        <li><a href="pages/equipo.html">Equipo</a></li>
+        <li><a href="pages/inscripciones.html">Inscripciones</a></li>
+        <li><a href="pages/contacto.html">Contacto</a></li>
+      </ul>
+
+      <!-- Redes sociales (derecha) -->
+      <div class="navbar__social" aria-label="Redes sociales">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="bi bi-tiktok"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+      </div>
+
+      <!-- Botón hamburguesa (solo móvil) -->
+      <button class="navbar__toggle" id="navToggle"
+              aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Menú móvil desplegable -->
+  <div class="navbar__mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+    <ul class="navbar__mobile-nav" role="list">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="pages/nosotros.html">Nosotros</a></li>
+      <li><a href="pages/sedes.html">Sedes</a></li>
+      <li><a href="pages/equipo.html">Equipo</a></li>
+      <li><a href="pages/inscripciones.html">Inscripciones</a></li>
+      <li><a href="pages/contacto.html">Contacto</a></li>
+    </ul>
+    <div class="navbar__mobile-social">
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="https://tiktok.com"   target="_blank" rel="noopener" aria-label="TikTok">  <i class="bi bi-tiktok"></i></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO SLIDER — 3 slides con imagen de fondo + texto + foto
+══════════════════════════════════════════════════════════════ -->
+<main id="main-content">
+<section class="hero" aria-label="Presentación del colegio">
+
+  <!-- Barra de progreso del slide activo -->
+  <div class="hero__progress" id="heroProgress" aria-hidden="true"></div>
+
+  <!-- ── SLIDE 1 ─────────────────────────────────────────── -->
+  <article class="hero__slide is-active" aria-roledescription="Diapositiva 1 de 3">
+    <!-- Fondo: reemplazar la URL de background-image con foto real -->
+    <div class="hero__slide-bg"
+         style="background-image: url('/img/fondo-principal.png');"
+         role="img" aria-label="Estudiantes del colegio"></div>
+    <div class="hero__slide-overlay"></div>
+
+    <div class="hero__slide-content container">
+      <!-- Texto izquierdo -->
+      <div class="hero__text">
+        <div class="hero__tag"><i class="bi bi-award-fill"></i> Excelencia Educativa</div>
+        <h1 class="hero__title">
+          Formando <em>líderes</em><br>del futuro con<br>valores y conocimiento
+        </h1>
+        <p class="hero__desc">
+          En la I.E. Islas del Rosario brindamos educación de calidad desde preescolar hasta
+          bachillerato, potenciando el talento de cada estudiante en un ambiente seguro y estimulante.
+        </p>
+        <div class="hero__actions">
+          <a href="pages/inscripciones.html" class="btn btn-primary">
+            <i class="bi bi-pencil-fill"></i> Inscríbete ahora
+          </a>
+          <a href="pages/nosotros.html" class="btn btn-outline-white">
+            <i class="bi bi-play-circle-fill"></i> Conoce más
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen derecha — reemplazar src con foto real de niños -->
+      <div class="hero__image">
+        <img src="/img/10.jpg" alt="Estudiantes felices" class="hero__img"
+             onerror="this.outerHTML='<div class=\'hero__img-placeholder\'><i class=\'bi bi-people-fill\'></i><p>Foto de estudiantes</p></div>'">
+      </div>
+    </div>
+  </article>
+
+  <!-- ── SLIDE 2 ─────────────────────────────────────────── -->
+  <article class="hero__slide" aria-roledescription="Diapositiva 2 de 3">
+    <div class="hero__slide-bg"
+         style="background-image: url('/img/fondo-principal.png');"
+         role="img" aria-label="Biblioteca del colegio"></div>
+    <div class="hero__slide-overlay"></div>
+
+    <div class="hero__slide-content container">
+      <div class="hero__text">
+        <div class="hero__tag"><i class="bi bi-book-fill"></i> Innovación Pedagógica</div>
+        <h1 class="hero__title">
+          Educación <em>innovadora</em><br>para el siglo XXI
+        </h1>
+        <p class="hero__desc">
+          Implementamos metodologías activas, tecnología educativa y proyectos
+          interdisciplinarios que preparan a nuestros estudiantes para los desafíos del futuro.
+        </p>
+        <div class="hero__actions">
+          <a href="pages/inscripciones.html" class="btn btn-primary">
+            <i class="bi bi-pencil-fill"></i> Inscríbete ahora
+          </a>
+          <a href="pages/sedes.html" class="btn btn-outline-white">
+            <i class="bi bi-building-fill"></i> Ver sedes
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__image">
+        <img src="/img/12.jpg" alt="Niños en clase" class="hero__img"
+             onerror="this.outerHTML='<div class=\'hero__img-placeholder\'><i class=\'bi bi-laptop-fill\'></i><p>Foto de clase</p></div>'">
+      </div>
+    </div>
+  </article>
+
+  <!-- ── SLIDE 3 ─────────────────────────────────────────── -->
+  <article class="hero__slide" aria-roledescription="Diapositiva 3 de 3">
+    <div class="hero__slide-bg"
+         style="background-image: url('/img/fondo-principal.png');"
+         role="img" aria-label="Actividades extracurriculares"></div>
+    <div class="hero__slide-overlay"></div>
+
+    <div class="hero__slide-content container">
+      <div class="hero__text">
+        <div class="hero__tag"><i class="bi bi-star-fill"></i> Desarrollo Integral</div>
+        <h1 class="hero__title">
+          Potenciamos el <em>talento</em><br>en cada estudiante
+        </h1>
+        <p class="hero__desc">
+          Deporte, arte, cultura y ciencia se unen en nuestro proyecto educativo para
+          desarrollar seres humanos íntegros, creativos y comprometidos con la sociedad.
+        </p>
+        <div class="hero__actions">
+          <a href="pages/inscripciones.html" class="btn btn-primary">
+            <i class="bi bi-pencil-fill"></i> Inscríbete ahora
+          </a>
+          <a href="pages/equipo.html" class="btn btn-outline-white">
+            <i class="bi bi-people-fill"></i> Nuestro equipo
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__image">
+        <img src="img/13.jpg" alt="Actividades estudiantiles" class="hero__img"
+             onerror="this.outerHTML='<div class=\'hero__img-placeholder\'><i class=\'bi bi-palette-fill\'></i><p>Foto de actividades</p></div>'">
+      </div>
+    </div>
+  </article>
+
+  <!-- Puntos de navegación -->
+  <div class="hero__dots" role="tablist" aria-label="Navegación del slider">
+    <button class="hero__dot is-active" data-index="0" role="tab" aria-selected="true"  aria-label="Ir a diapositiva 1"></button>
+    <button class="hero__dot"           data-index="1" role="tab" aria-selected="false" aria-label="Ir a diapositiva 2"></button>
+    <button class="hero__dot"           data-index="2" role="tab" aria-selected="false" aria-label="Ir a diapositiva 3"></button>
+  </div>
+
+  <!-- Flechas de navegación -->
+  <button class="hero__arrow hero__arrow--prev" id="heroPrev" aria-label="Diapositiva anterior">
+    <i class="bi bi-chevron-left"></i>
+  </button>
+  <button class="hero__arrow hero__arrow--next" id="heroNext" aria-label="Diapositiva siguiente">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     ESTADÍSTICAS / NÚMEROS DEL COLEGIO
+══════════════════════════════════════════════════════════════ -->
+<section class="stats section" aria-label="Estadísticas del colegio">
+  <div class="container">
+    <div class="stats__grid">
+
+      <div class="stats__item reveal">
+        <div class="stats__number">
+          <span data-count="240" data-suffix="+">0+</span>
+        </div>
+        <p class="stats__label">Estudiantes matriculados</p>
+      </div>
+      <div class="stats__item reveal delay-3">
+        <div class="stats__number">
+          <span data-count="2" data-suffix="">0</span>
+        </div>
+        <p class="stats__label">Jornadas disponibles</p>
+      </div>
+
+      <div class="stats__item reveal delay-4">
+        <div class="stats__number">
+          <span data-count="2011" data-suffix="">0</span>
+        </div>
+        <p class="stats__label">Año de reconocimiento oficial</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     BIENVENIDA / PRESENTACIÓN
+══════════════════════════════════════════════════════════════ -->
+<section class="welcome section" aria-labelledby="welcome-title">
+  <div class="container">
+    <div class="welcome__grid">
+
+      <!-- Imagen izquierda -->
+      <div class="welcome__img-wrap reveal from-left">
+        <img src="img/niños.jpeg" alt="Instalaciones del colegio" class="welcome__img"
+             onerror="this.outerHTML='<div class=\'welcome__img-placeholder\'><i class=\'bi bi-building-fill\'></i><p style=\'font-size:.8rem;margin-top:8px\'>Foto del colegio</p></div>'">
+        <!-- Tarjeta flotante sobre la imagen -->
+        <div class="welcome__badge">
+          <div class="welcome__badge-icon">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <div class="welcome__badge-text">
+            <strong>2011</strong>
+            <span>Años de trayectoria</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Texto derecho -->
+      <div class="welcome__content reveal from-right">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-tag"><i class="bi bi-house-heart-fill"></i> Bienvenidos</span>
+          <h2 class="section-title" id="welcome-title" style="text-align:left;">
+            Un espacio donde el conocimiento toma vida
+          </h2>
+        </div>
+
+        <p class="welcome__text">
+          La Institución Educativa Islas del Rosario, reconocida mediante Resolución 0222
+          del 14 de junio de 2011, es una institución de carácter oficial ubicada en el
+          corregimiento Isla del Rosario, Isla Grande, Cartagena de Indias. Formamos a la
+          comunidad isleña afrodescendiente y raizal desde preescolar hasta media, con énfasis
+          en ecoturismo y el desarrollo sostenible del territorio insular colombiano.
+        </p>
+
+        <div class="welcome__features">
+          <div class="welcome__feature">
+            <i class="bi bi-patch-check-fill"></i>
+            Acreditación oficial del Ministerio de Educación Nacional
+          </div>
+          <div class="welcome__feature">
+            <i class="bi bi-laptop-fill"></i>
+            Aulas dotadas con tecnología de última generación
+          </div>
+          <div class="welcome__feature">
+            <i class="bi bi-shield-fill-check"></i>
+            Ambiente seguro, inclusivo y libre de violencia
+          </div>
+          <div class="welcome__feature">
+            <i class="bi bi-people-fill"></i>
+            Comunidad educativa activa y participativa
+          </div>
+        </div>
+
+        <a href="pages/nosotros.html" class="btn btn-primary">
+          <i class="bi bi-arrow-right-circle-fill"></i> Conoce nuestra historia
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Ola divisoria -->
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="var(--color-light)"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     VALORES INSTITUCIONALES
+══════════════════════════════════════════════════════════════ -->
+<section class="valores section section--light" aria-labelledby="valores-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-heart-fill"></i> Nuestros valores</span>
+      <h2 class="section-title" id="valores-title">Los pilares que nos guían</h2>
+      <p class="section-subtitle">
+        Nuestra comunidad educativa construye su identidad sobre valores fundamentales
+        que trascienden el aula y forman ciudadanos íntegros.
+      </p>
+    </header>
+
+    <div class="valores__grid">
+
+      <div class="valor-card reveal delay-1">
+        <div class="valor-card__icon"><i class="bi bi-lightbulb-fill"></i></div>
+        <h3 class="valor-card__title">Excelencia</h3>
+        <p class="valor-card__text">
+          Nos esforzamos por alcanzar los más altos estándares en cada proceso académico
+          y formativo, superando las expectativas con dedicación y compromiso.
+        </p>
+      </div>
+
+      <div class="valor-card reveal delay-2">
+        <div class="valor-card__icon"><i class="bi bi-globe2"></i></div>
+        <h3 class="valor-card__title">Inclusión</h3>
+        <p class="valor-card__text">
+          Valoramos la diversidad y garantizamos oportunidades equitativas para todos
+          los estudiantes, sin distinción de origen, condición o capacidad.
+        </p>
+      </div>
+
+      <div class="valor-card reveal delay-3">
+        <div class="valor-card__icon"><i class="bi bi-hand-thumbs-up-fill"></i></div>
+        <h3 class="valor-card__title">Respeto</h3>
+        <p class="valor-card__text">
+          Fomentamos relaciones basadas en el respeto mutuo, la dignidad humana y el
+          reconocimiento del otro como sujeto de derechos y deberes.
+        </p>
+      </div>
+
+      <div class="valor-card reveal delay-2">
+        <div class="valor-card__icon"><i class="bi bi-patch-check-fill"></i></div>
+        <h3 class="valor-card__title">Responsabilidad</h3>
+        <p class="valor-card__text">
+          Asumimos con seriedad cada compromiso adquirido con nuestra comunidad,
+          el medio ambiente y las generaciones futuras del país.
+        </p>
+      </div>
+
+      <div class="valor-card reveal delay-3">
+        <div class="valor-card__icon"><i class="bi bi-tree-fill"></i></div>
+        <h3 class="valor-card__title">Sostenibilidad</h3>
+        <p class="valor-card__text">
+          Educamos con conciencia ambiental, promoviendo prácticas sostenibles que
+          preserven los ecosistemas de nuestra región caribeña.
+        </p>
+      </div>
+
+      <div class="valor-card reveal delay-4">
+        <div class="valor-card__icon"><i class="bi bi-people-fill"></i></div>
+        <h3 class="valor-card__title">Comunidad</h3>
+        <p class="valor-card__text">
+          Cultivamos el sentido de pertenencia y la colaboración entre estudiantes,
+          familias, docentes y el entorno social que nos rodea.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Ola divisoria (invertida) -->
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C480,0 960,60 1440,30 L1440,60 L0,60 Z" fill="var(--color-white)"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MISIÓN Y VISIÓN
+══════════════════════════════════════════════════════════════ -->
+<section class="mision-vision section" aria-labelledby="mv-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-compass-fill"></i> Nuestra esencia</span>
+      <h2 class="section-title-2" id="mv-title">Misión y Visión</h2>
+    </header>
+
+    <div class="mision-vision__grid">
+      <div class="mv-card reveal from-left">
+        <div class="mv-card__icon"><i class="bi bi-bullseye"></i></div>
+        <h3 class="mv-card__title">Nuestra Misión</h3>
+        <p class="mv-card__text">
+          La Institución Educativa de Islas del Rosario del Distrito de Cartagena tiene la
+          responsabilidad social y moral de formar a los miembros de la comunidad isleña,
+          basada en normas de carácter legal y educativo, con principios de competencias de
+          calidad que los habilite para generar un desarrollo autogestionario en equilibrio con
+          su entorno, con ideas emprendedoras fundamentadas en la factibilidad de ejecución.
+        </p>
+      </div>
+
+      <div class="mv-card reveal from-right">
+        <div class="mv-card__icon"><i class="bi bi-compass-fill"></i></div>
+        <h3 class="mv-card__title">Nuestra Visión</h3>
+        <p class="mv-card__text">
+          Para el año 2030, la institución confía consolidar su proceso de formación en los
+          estudiantes de la comunidad afrodescendiente y raizal en todos los niveles de la
+          educación formal colombiana, con una formación media técnica en ecoturismo y puesta
+          en marcha de proyectos pedagógicos dirigidos al sector turismo, organizados y ejecutados
+          por la comunidad educativa del plantel.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PROGRAMAS EDUCATIVOS
+══════════════════════════════════════════════════════════════ -->
+<section class="programas section section--light" aria-labelledby="programas-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-journal-bookmark-fill"></i> Oferta académica</span>
+      <h2 class="section-title" id="programas-title">Programas Educativos</h2>
+      <p class="section-subtitle">
+        Ofrecemos una educación completa que acompaña al estudiante en cada etapa de su desarrollo.
+      </p>
+    </header>
+
+    <div class="programas__grid">
+
+      <article class="programa-card reveal delay-1">
+        <div class="programa-card__img-wrap">
+          <div class="programa-card__img-placeholder"><img src="/img/3.jpg" alt=""></i></div>
+          <span class="programa-card__level">Preescolar</span>
+        </div>
+        <div class="programa-card__body">
+          <h3 class="programa-card__title">Educación Inicial</h3>
+          <p class="programa-card__text">
+            Estimulación temprana y desarrollo de habilidades socioemocionales en un ambiente
+            lúdico y seguro para niños de 3 a 5 años. Grupos reducidos para atención personalizada.
+          </p>
+          <a href="pages/inscripciones.html" class="programa-card__link">
+            Ver programa <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+      <article class="programa-card reveal delay-2">
+        <div class="programa-card__img-wrap">
+          <div class="programa-card__img-placeholder"><img src="/img/4.jpg" alt=""></div>
+          <span class="programa-card__level">Primaria</span>
+        </div>
+        <div class="programa-card__body">
+          <h3 class="programa-card__title">Básica Primaria</h3>
+          <p class="programa-card__text">
+            Sólida formación en competencias lectoras, matemáticas, ciencias y ciudadanía
+            para estudiantes de 1.° a 5.° grado, con énfasis en el pensamiento crítico.
+          </p>
+          <a href="pages/inscripciones.html" class="programa-card__link">
+            Ver programa <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+      <article class="programa-card reveal delay-3">
+        <div class="programa-card__img-wrap">
+          <div class="programa-card__img-placeholder"><img src="/img/33.jpg" alt=""></i></div>
+          <span class="programa-card__level">Secundaria</span>
+        </div>
+        <div class="programa-card__body">
+          <h3 class="programa-card__title">Básica Secundaria</h3>
+          <p class="programa-card__text">
+            Formación rigurosa de 6.° a 9.° grado con proyectos de investigación, clubes
+            temáticos, robótica y bilingüismo para una preparación universitaria sólida.
+          </p>
+          <a href="pages/inscripciones.html" class="programa-card__link">
+            Ver programa <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     GALERÍA PREVIEW
+══════════════════════════════════════════════════════════════ -->
+<section class="galeria-preview section section--light" aria-label="Galería de imágenes">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-images"></i> Galería</span>
+      <h2 class="section-title">La vida en el colegio</h2>
+    </header>
+
+    <div class="galeria-preview__grid reveal" id="galeriaGrid">
+      <div class="galeria-preview__item" data-src="/img/41.jpg">
+        <img src="/img/41.jpg" alt="Vida en el colegio" class="galeria-preview__img">
+        <div class="galeria-preview__overlay"><i class="bi bi-zoom-in"></i></div>
+      </div>
+      <div class="galeria-preview__item" data-src="/img/29.jpg">
+        <img src="/img/29.jpg" alt="Vida en el colegio" class="galeria-preview__img">
+        <div class="galeria-preview__overlay"><i class="bi bi-zoom-in"></i></div>
+      </div>
+      <div class="galeria-preview__item" data-src="/img/43.jpg">
+        <img src="/img/43.jpg" alt="Vida en el colegio" class="galeria-preview__img">
+        <div class="galeria-preview__overlay"><i class="bi bi-zoom-in"></i></div>
+      </div>
+      <div class="galeria-preview__item" data-src="/img/32.jpg">
+        <img src="/img/32.jpg" alt="Vida en el colegio" class="galeria-preview__img">
+        <div class="galeria-preview__overlay"><i class="bi bi-zoom-in"></i></div>
+      </div>
+      <div class="galeria-preview__item" data-src="/img/46.jpg">
+        <img src="/img/46.jpg" alt="Vida en el colegio" class="galeria-preview__img">
+        <div class="galeria-preview__overlay"><i class="bi bi-zoom-in"></i></div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista de imagen">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Cerrar">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Anterior">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <div class="lightbox__img-wrap">
+        <img src="" alt="Vista previa" class="lightbox__img" id="lightboxImg">
+      </div>
+      <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Siguiente">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     NOTICIAS
+══════════════════════════════════════════════════════════════ -->
+<!-- <section class="noticias section" aria-labelledby="noticias-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-newspaper"></i> Novedades</span>
+      <h2 class="section-title" id="noticias-title">Noticias del colegio</h2>
+      <p class="section-subtitle">Mantente al tanto de todo lo que sucede en nuestra comunidad educativa.</p>
+    </header>
+
+    <div class="noticias__grid">
+
+      <article class="noticia-card reveal delay-1">
+        <div class="noticia-card__img-wrap">
+          <div class="noticia-placeholder"><i class="bi bi-trophy-fill"></i></div>
+        </div>
+        <div class="noticia-card__body">
+          <div class="noticia-card__meta">
+            <span class="noticia-card__date"><i class="bi bi-calendar3"></i> 10 feb 2025</span>
+            <span class="noticia-card__category">Logros</span>
+          </div>
+          <h3 class="noticia-card__title">Estudiantes ganan primer lugar en olimpiadas de matemáticas departamentales</h3>
+          <p class="noticia-card__excerpt">
+            Tres estudiantes de grado 10 representaron con orgullo a la institución y obtuvieron medalla de oro en la competencia regional...
+          </p>
+        </div>
+      </article>
+
+      <article class="noticia-card reveal delay-2">
+        <div class="noticia-card__img-wrap">
+          <div class="noticia-placeholder"><i class="bi bi-calendar-event-fill"></i></div>
+        </div>
+        <div class="noticia-card__body">
+          <div class="noticia-card__meta">
+            <span class="noticia-card__date"><i class="bi bi-calendar3"></i> 3 feb 2025</span>
+            <span class="noticia-card__category">Eventos</span>
+          </div>
+          <h3 class="noticia-card__title">Festival cultural de fin de año reunió a más de 800 familias</h3>
+          <p class="noticia-card__excerpt">
+            Una noche mágica llena de danzas folclóricas, teatro y música unió a toda la comunidad educativa en una celebración inolvidable...
+          </p>
+        </div>
+      </article>
+
+      <article class="noticia-card reveal delay-3">
+        <div class="noticia-card__img-wrap">
+          <div class="noticia-placeholder"><i class="bi bi-laptop-fill"></i></div>
+        </div>
+        <div class="noticia-card__body">
+          <div class="noticia-card__meta">
+            <span class="noticia-card__date"><i class="bi bi-calendar3"></i> 25 ene 2025</span>
+            <span class="noticia-card__category">Tecnología</span>
+          </div>
+          <h3 class="noticia-card__title">Inauguración de la nueva sala de informática con 40 computadores</h3>
+          <p class="noticia-card__excerpt">
+            Gracias a la gestión de la rectoría y el apoyo del municipio, los estudiantes ya disfrutan de equipos modernos...
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section> -->
+
+<!-- ══════════════════════════════════════════════════════════
+     BANNER CTA — INSCRIPCIONES
+══════════════════════════════════════════════════════════════ -->
+<section class="cta-banner" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-banner__content reveal">
+      <span class="section-tag" style="margin-bottom:var(--space-lg);">
+        <i class="bi bi-star-fill"></i> ¡Cupos disponibles!
+      </span>
+      <h2 class="cta-banner__title" id="cta-title">
+        ¿Quieres que tu hijo estudie en la I.E. Islas del Rosario?
+      </h2>
+      <p class="cta-banner__desc">
+        Las inscripciones para el año escolar 2025 están abiertas. No pierdas el cupo,
+        los espacios son limitados y la demanda es alta. ¡Asegura el futuro de tu familia hoy!
+      </p>
+      <div class="cta-banner__actions">
+        <a href="pages/inscripciones.html" class="btn btn-white">
+          <i class="bi bi-pencil-fill"></i> Inscribirse ahora
+        </a>
+        <a href="pages/contacto.html" class="btn btn-outline-white">
+          <i class="bi bi-chat-fill"></i> Contáctanos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+
+  <div class="footer__main">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Columna 1: Marca -->
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="img/logo/logo.png" alt="Logo I.E. Islas del Rosario"
+                 onerror="this.style.display='none'">
+            <div class="footer__logo-text">
+              <strong>I.E. Islas del Rosario</strong>
+              <span>Educación con raíces, futuro con alas</span>
+            </div>
+          </div>
+          <p class="footer__desc">
+            Institución educativa oficial de la región Caribe colombiana, comprometida
+            con la excelencia académica y la formación integral de nuestros estudiantes.
+          </p>
+          <div class="footer__social" aria-label="Redes sociales">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+              <i class="bi bi-tiktok"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://wa.me/573128149500" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna 2: Navegación -->
+        <nav aria-label="Menú del footer">
+          <h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html"><i class="bi bi-chevron-right"></i> Inicio</a></li>
+            <li><a href="pages/nosotros.html"><i class="bi bi-chevron-right"></i> Nosotros</a></li>
+            <li><a href="pages/sedes.html"><i class="bi bi-chevron-right"></i> Sedes</a></li>
+            <li><a href="pages/equipo.html"><i class="bi bi-chevron-right"></i> Equipo docente</a></li>
+            <li><a href="pages/inscripciones.html"><i class="bi bi-chevron-right"></i> Inscripciones</a></li>
+            <li><a href="pages/contacto.html"><i class="bi bi-chevron-right"></i> Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- Columna 3: Horarios -->
+        <div>
+          <h3 class="footer__col-title">Horarios</h3>
+          <div class="footer__schedule">
+            <div class="footer__schedule-item">
+              <span>Lunes – Viernes</span>
+              <strong>Mañ. 6:30–12:30 / Tar. 12:30–17:30</strong>
+            </div>
+            <div class="footer__schedule-item">
+              <span>Jornada tarde</span>
+              <strong>14:00 – 18:00</strong>
+            </div>
+            <div class="footer__schedule-item">
+              <span>Sábados</span>
+              <strong>Cerrado</strong>
+            </div>
+            <div class="footer__schedule-item">
+              <span>Domingos</span>
+              <strong>Cerrado</strong>
+            </div>
+            <div class="footer__schedule-item">
+              <span>Secretaría</span>
+              <strong>7:00 – 17:00</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna 4: Contacto -->
+        <div>
+          <h3 class="footer__col-title">Contáctanos</h3>
+          <div class="footer__contact">
+            <div class="footer__contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Corregimiento Isla del Rosario, Isla Grande, Sector Petare, Cartagena, Bolívar</span>
+            </div>
+            <div class="footer__contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <span>
+                <a href="tel:+573128149500">312 814 9500</a><br>
+                <a href="tel:+573128149500">312 814 9500</a>
+              </span>
+            </div>
+            <div class="footer__contact-item">
+              <i class="bi bi-envelope-fill"></i>
+              <a href="mailto:i.e.islasdelrosario@sedcartagena.gov.co">i.e.islasdelrosario@sedcartagena.gov.co</a>
+            </div>
+            <div class="footer__contact-item">
+              <i class="bi bi-whatsapp"></i>
+              <a href="https://wa.me/573128149500" target="_blank" rel="noopener">
+                Escribir por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra inferior del footer -->
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p class="footer__copy">
+          &copy; 2025 <a href="index.html">I.E. Islas del Rosario</a>. Todos los derechos reservados.
+        </p>
+        <nav class="footer__bottom-links" aria-label="Links legales">
+          <a href="#">Política de privacidad</a>
+          <a href="#">Términos de uso</a>
+          <a href="pages/contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     BOTONES FLOTANTES
+══════════════════════════════════════════════════════════════ -->
+<div class="floating-buttons" aria-label="Acciones rápidas">
+
+  <!-- Botón WhatsApp — siempre visible -->
+  <a href="https://wa.me/573128149500?text=Hola,%20quiero%20información%20sobre%20la%20I.E.%20Islas%20del%20Rosario"
+     class="btn-whatsapp" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- Botón subir — aparece después de hacer scroll -->
+  <button class="btn-scroll-top" id="btnScrollTop" aria-label="Volver arriba">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+</div>
+
+<!-- Script principal -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

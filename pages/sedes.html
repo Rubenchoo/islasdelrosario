@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce las sedes de la Institución Educativa Islas del Rosario: ubicación, niveles y horarios.">
+  <title>Sedes — I.E. Islas del Rosario</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<div class="page-loader" id="pageLoader"><div class="loader-wave"><span></span><span></span><span></span><span></span><span></span></div><p class="loader-text">Cargando...</p></div>
+<div id="bubblesContainer" aria-hidden="true"></div>
+
+<!-- Modal publicidad -->
+<div class="ad-modal-overlay hidden" id="adModal" role="dialog" aria-modal="true">
+  <div class="ad-modal">
+    <button class="ad-modal__close" id="adModalClose" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+    <div class="ad-modal__img-wrap">
+      <img src="../img/niños.jpeg" alt="Publicidad I.E. Islas del Rosario" class="ad-modal__img">
+    </div>
+    <div class="ad-modal__footer">
+      <h3 class="ad-modal__title">¡Inscripciones Abiertas 2025!</h3>
+      <p class="ad-modal__desc">Asegura el cupo de tu hijo/a. Cupos limitados.</p>
+      <a href="#" class="ad-modal__btn" id="adModalAction"><i class="bi bi-arrow-right-circle-fill"></i> Ver información</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     BARRA SUPERIOR DE INFORMACIÓN
+══════════════════════════════════════════════════════════════ -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar__inner">
+      <div class="top-bar__contacts">
+        <a href="tel:+573128149500">
+          <i class="bi bi-telephone-fill"></i>
+          (+57) 312 814 9500
+        </a>
+        <a href="mailto:i.e.islasdelrosario@sedcartagena.gov.co">
+          <i class="bi bi-envelope-fill"></i>
+          i.e.islasdelrosario@sedcartagena.gov.co
+        </a>
+        <span><i class="bi bi-geo-alt-fill" style="color:var(--color-primary)"></i> Isla grande, Islas del rosario, Cartagena</span>
+      </div>
+      <div class="top-bar__cta">
+        <i class="bi bi-clock-fill" style="color:var(--color-primary)"></i>
+        Mañana: 6:30–12:30 | Tarde: 12:30–5:30 p.m.
+        <a href="inscripciones.html">Inscripciones →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <nav class="navbar__inner">
+      <a href="../index.html" class="navbar__logo">
+        <img src="../img/logo/logo.png" alt="Logo" class="navbar__logo-img" onerror="this.style.display='none'">
+        <div class="navbar__logo-text"><strong>I.E. Islas del Rosario</strong><span>Educación con raíces, futuro con alas</span></div>
+      </a>
+      <ul class="navbar__nav">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="sedes.html" class="active">Sedes</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="inscripciones.html">Inscripciones</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="navbar__social">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://tiktok.com"   target="_blank" rel="noopener" aria-label="TikTok">  <i class="bi bi-tiktok"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="navbar__toggle-bar"></span><span class="navbar__toggle-bar"></span><span class="navbar__toggle-bar"></span>
+      </button>
+    </nav>
+  </div>
+  <div class="navbar__mobile-menu" id="mobileMenu">
+    <ul class="navbar__mobile-nav">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="sedes.html" class="active">Sedes</a></li>
+      <li><a href="equipo.html">Equipo</a></li>
+      <li><a href="inscripciones.html">Inscripciones</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="navbar__mobile-social">
+      <a href="https://facebook.com" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+      <a href="https://tiktok.com"   target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- Hero subpágina -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__content">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="../index.html">Inicio</a><i class="bi bi-chevron-right"></i><span>Sedes</span>
+      </nav>
+      <span class="page-hero__tag"><i class="bi bi-geo-alt-fill"></i> Nuestros espacios</span>
+      <h1 class="page-hero__title">Nuestras Sedes</h1>
+      <p class="page-hero__desc">Nuestra sede está ubicada en el corazón del archipiélago, ofreciendo educación de calidad a la comunidad isleña.</p>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:-1px;left:0;right:0;line-height:0;z-index:5;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--color-lighter)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CARDS DE SEDES
+══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--color-white)">
+  <div class="container">
+    <!-- Una sola sede, centrada -->
+    <div style="max-width:640px;margin:0 auto;">
+
+      <article class="sede-card reveal">
+        <div class="sede-card__img-wrap">
+          <!-- Reemplazar con foto real: <img src="../img/sedes/sede-principal.jpg" alt="Sede principal"> -->
+          <div class="sede-img-placeholder"><i class="bi bi-building-fill"></i><p>Sede Única</p></div>
+          <span class="sede-card__badge">Sede Única</span>
+        </div>
+        <div class="sede-card__body">
+          <h2 class="sede-card__name">Institución Educativa Islas del Rosario</h2>
+          <div class="sede-card__info">
+            <div class="sede-card__info-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Corregimiento Isla del Rosario, Isla Grande, Sector Petare, Cartagena, Bolívar</span>
+            </div>
+            <div class="sede-card__info-item">
+              <i class="bi bi-telephone-fill"></i>
+              <a href="tel:+573128149500">312 814 9500</a>
+              &nbsp;|&nbsp;
+              <a href="tel:+573172753765">317 275 3765</a>
+            </div>
+            <div class="sede-card__info-item">
+              <i class="bi bi-clock-fill"></i>
+              <span>Mañana: 6:30–12:30 p.m. &nbsp;|&nbsp; Tarde: 12:30–5:30 p.m.</span>
+            </div>
+            <div class="sede-card__info-item">
+              <i class="bi bi-envelope-fill"></i>
+              <a href="mailto:i.e.islasdelrosario@sedcartagena.gov.co">i.e.islasdelrosario@sedcartagena.gov.co</a>
+            </div>
+            <div class="sede-card__info-item">
+              <i class="bi bi-people-fill"></i>
+              <span>240 estudiantes matriculados &nbsp;|&nbsp; 6 aulas de clase</span>
+            </div>
+            <div class="sede-card__info-item">
+              <i class="bi bi-file-earmark-text-fill"></i>
+              <span>Res. 0222 del 14 de junio de 2011 &nbsp;|&nbsp; DANE: 213001000059</span>
+            </div>
+          </div>
+          <div class="sede-card__levels">
+            <span class="level-tag">Preescolar</span>
+            <span class="level-tag">Básica Primaria</span>
+            <span class="level-tag">Básica Secundaria</span>
+            <span class="level-tag">Media</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     INFRAESTRUCTURA Y SERVICIOS
+══════════════════════════════════════════════════════════════ -->
+<section class="section section--light" aria-labelledby="infra-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-tools"></i> Instalaciones</span>
+      <h2 class="section-title" id="infra-title">Infraestructura y servicios</h2>
+      <p class="section-subtitle">Nuestras instalaciones están diseñadas para ofrecer el mejor ambiente de aprendizaje.</p>
+    </header>
+
+    <div class="grid-3">
+      <div class="card reveal delay-1">
+        <div class="card__body">
+          <div class="card__icon"><i class="bi bi-pc-display-horizontal"></i></div>
+          <h3 class="card__title">Sala de Informática</h3>
+          <p class="card__text">40 computadores de última generación con internet de banda ancha para aprendizaje digital y programación desde temprana edad.</p>
+        </div>
+      </div>
+      <div class="card reveal delay-2">
+        <div class="card__body">
+          <div class="card__icon"><i class="bi bi-book-fill"></i></div>
+          <h3 class="card__title">Biblioteca</h3>
+          <p class="card__text">Más de 8.000 títulos entre libros de texto, literatura y material de consulta. Con zona de lectura tranquila y acceso digital.</p>
+        </div>
+      </div>
+      <div class="card reveal delay-3">
+        <div class="card__body">
+          <div class="card__icon"><i class="bi bi-flask-fill"></i></div>
+          <h3 class="card__title">Laboratorio de Ciencias</h3>
+          <p class="card__text">Laboratorio equipado para experimentos de química, biología y física. Clases prácticas que refuerzan los conceptos teóricos.</p>
+        </div>
+      </div>
+      <div class="card reveal delay-1">
+        <div class="card__body">
+          <div class="card__icon"><i class="bi bi-dribbble"></i></div>
+          <h3 class="card__title">Canchas Deportivas</h3>
+          <p class="card__text">Cancha multifuncional de baloncesto, fútbol sala y voleibol. Zona verde y pista de atletismo para desarrollo físico integral.</p>
+        </div>
+      </div>
+      <div class="card reveal delay-2">
+        <div class="card__body">
+          <div class="card__icon"><i class="bi bi-music-note-beamed"></i></div>
+          <h3 class="card__title">Sala de Artes</h3>
+          <p class="card__text">Espacio dedicado a las artes plásticas, música y teatro. Dotado con instrumentos, materiales y equipos de audio y video.</p>
+        </div>
+      </div>
+      <div class="card reveal delay-3">
+        <div class="card__body">
+          <div class="card__icon"><i class="bi bi-heart-pulse-fill"></i></div>
+          <h3 class="card__title">Enfermería</h3>
+          <p class="card__text">Servicio de enfermería permanente en todas las sedes con personal de salud para atención de primeros auxilios y seguimiento médico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mapa placeholder -->
+<section class="section" style="background:var(--color-white)">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-tag"><i class="bi bi-map-fill"></i> Ubicación</span>
+      <h2 class="section-title">¿Cómo llegar?</h2>
+    </header>
+    <div class="sede-map reveal">
+      <iframe
+        src="https://umap.openstreetmap.fr/es/map/ordenamiento-territorial-y-planeacion-urbana-isla-_226261?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=false&onLoadPanel=none&captionBar=false#16/10.1768/-75.7391"
+        width="100%" height="420"
+        style="border:0;border-radius:var(--radius-lg);display:block;"
+        allowfullscreen
+        loading="lazy"
+        title="Ubicación I.E. Islas del Rosario"
+        aria-label="Mapa de ubicación de la institución"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" fill="var(--color-lighter)"/>
+    </svg>
+  </div>
+  <div class="footer__main">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="../img/logo/logo.png" alt="Logo" onerror="this.style.display='none'">
+            <div class="footer__logo-text"><strong>I.E. Islas del Rosario</strong><span>Educación con raíces, futuro con alas</span></div>
+          </div>
+          <p class="footer__desc">Institución educativa oficial comprometida con la excelencia académica Res. 0222 del 14 de junio de 2011.</p>
+          <div class="footer__social">
+            <a href="https://facebook.com" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+            <a href="https://tiktok.com"   target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <nav><h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links">
+            <li><a href="../index.html"><i class="bi bi-chevron-right"></i> Inicio</a></li>
+            <li><a href="nosotros.html"><i class="bi bi-chevron-right"></i> Nosotros</a></li>
+            <li><a href="sedes.html"><i class="bi bi-chevron-right"></i> Sedes</a></li>
+            <li><a href="equipo.html"><i class="bi bi-chevron-right"></i> Equipo</a></li>
+            <li><a href="inscripciones.html"><i class="bi bi-chevron-right"></i> Inscripciones</a></li>
+            <li><a href="contacto.html"><i class="bi bi-chevron-right"></i> Contacto</a></li>
+          </ul>
+        </nav>
+        <div><h3 class="footer__col-title">Horarios</h3>
+          <div class="footer__schedule">
+            <div class="footer__schedule-item"><span>Lunes – Viernes</span><strong>Mañ. 6:30–12:30 / Tar. 12:30–17:30</strong></div>
+            <div class="footer__schedule-item"><span>Jornada tarde</span><strong>14:00 – 18:00</strong></div>
+            <div class="footer__schedule-item"><span>Secretaría</span><strong>7:00 – 17:00</strong></div>
+          </div>
+        </div>
+        <div><h3 class="footer__col-title">Contacto</h3>
+          <div class="footer__contact">
+            <div class="footer__contact-item"><i class="bi bi-geo-alt-fill"></i><span>Isla del Rosario, Isla Grande, Sector Petare, Cartagena</span></div>
+            <div class="footer__contact-item"><i class="bi bi-telephone-fill"></i><a href="tel:+573128149500">312 814 9500</a></div>
+            <div class="footer__contact-item"><i class="bi bi-envelope-fill"></i><a href="mailto:i.e.islasdelrosario@sedcartagena.gov.co">i.e.islasdelrosario@sedcartagena.gov.co</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p class="footer__copy">&copy; 2025 <a href="../index.html">I.E. Islas del Rosario</a>. Todos los derechos reservados.</p>
+        <nav class="footer__bottom-links"><a href="#">Privacidad</a><a href="#">Términos</a></nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-buttons">
+  <a href="https://wa.me/573128149500" class="btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+  <button class="btn-scroll-top" id="btnScrollTop" aria-label="Subir"><i class="bi bi-chevron-up"></i></button>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

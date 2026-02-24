@@ -1,0 +1,577 @@
+/* ================================================================
+   variables.css — Institución Educativa Islas del Rosario
+   Contiene: variables de color, tipografía, espaciado y
+   animaciones base usadas en todo el proyecto.
+================================================================ */
+
+/* ── Importar fuente Poppins desde Google Fonts ─────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ── Variables globales ─────────────────────────────────────── */
+:root {
+
+  /* Paleta de colores principal */
+  --color-primary:       #00a8e8;   /* Azul cielo — color de marca */
+  --color-secondary:     #007ea7;   /* Azul océano — variante más oscura */
+  --color-dark:          #00354d;   /* Azul profundo — fondos oscuros */
+  --color-darker:        #001f2e;   /* Casi negro azulado */
+  --color-light:         #e6f7fd;   /* Azul muy claro — fondos suaves */
+  --color-lighter:       #f0fbff;   /* Blanco azulado — fondo de página */
+  --color-white:         #ffffff;
+  --color-text:          #0f2d3d;   /* Color de texto principal */
+  --color-text-muted:    #5b8a9f;   /* Texto secundario / subtítulos */
+  --color-border:        #c8e8f5;   /* Bordes y separadores */
+  --color-success:       #22c55e;   /* Verde para estados positivos */
+  --color-warning:       #f59e0b;   /* Ámbar para avisos */
+
+  /* Gradientes reutilizables */
+  --gradient-primary:    linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --gradient-dark:       linear-gradient(135deg, var(--color-dark) 0%, var(--color-darker) 100%);
+  --gradient-hero:       linear-gradient(110deg, rgba(0,53,77,.85) 0%, rgba(0,126,167,.55) 60%, transparent 100%);
+  --gradient-wave:       linear-gradient(180deg, var(--color-light) 0%, var(--color-white) 100%);
+
+  /* Sombras */
+  --shadow-xs:   0 1px  6px rgba(0,53,77,.07);
+  --shadow-sm:   0 3px 12px rgba(0,53,77,.10);
+  --shadow-md:   0 6px 24px rgba(0,53,77,.14);
+  --shadow-lg:   0 16px 48px rgba(0,53,77,.18);
+  --shadow-xl:   0 28px 72px rgba(0,53,77,.22);
+
+  /* Tipografía */
+  --font-family:  'Poppins', sans-serif;
+  --font-xs:      0.75rem;    /* 12px */
+  --font-sm:      0.875rem;   /* 14px */
+  --font-base:    1rem;       /* 16px */
+  --font-md:      1.125rem;   /* 18px */
+  --font-lg:      1.25rem;    /* 20px */
+  --font-xl:      1.5rem;     /* 24px */
+  --font-2xl:     2rem;       /* 32px */
+  --font-3xl:     2.5rem;     /* 40px */
+  --font-4xl:     3rem;       /* 48px */
+
+  /* Espaciado */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   40px;
+  --space-2xl:  64px;
+  --space-3xl:  96px;
+
+  /* Radios de borde */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
+  --radius-full: 9999px;
+
+  /* Transición base para animaciones suaves */
+  --transition-fast:   all 0.2s ease;
+  --transition-base:   all 0.35s ease;
+  --transition-slow:   all 0.55s ease;
+  --transition-smooth: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Alto del navbar fijo */
+  --nav-height: 72px;
+}
+
+/* ── Reset y base ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background-color: var(--color-lighter);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  border: none;
+  background: none;
+}
+
+/* ── Clases utilitarias generales ───────────────────────────── */
+
+/* Contenedor centrado con márgenes laterales */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Sección estándar con padding vertical generoso */
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+/* Variante con fondo azul claro */
+.section--light {
+  background-color: var(--color-light);
+}
+
+/* Variante con fondo azul principal */
+.section--primary {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+}
+
+/* Variante con fondo oscuro */
+.section--dark {
+  background: var(--gradient-dark);
+  color: var(--color-white);
+}
+
+/* Encabezado de sección */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-primary);
+  background: rgba(0,168,232,.1);
+  border: 1px solid rgba(0,168,232,.25);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+}
+
+/* Cuando la sección es de fondo azul, el tag se invierte */
+.section--primary .section-tag,
+.section--dark .section-tag {
+  color: var(--color-white);
+  background: rgba(255,255,255,.15);
+  border-color: rgba(255,255,255,.3);
+}
+
+.section-title {
+  font-size: clamp(var(--font-xl), 4vw, var(--font-3xl));
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-dark);
+  margin-bottom: var(--space-md);
+}
+
+.section-title-2 {
+  font-size: clamp(var(--font-xl), 4vw, var(--font-3xl));
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+.section--primary .section-title,
+.section--dark .section-title {
+  color: var(--color-white);
+}
+
+.section-subtitle {
+  font-size: var(--font-md);
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.section--primary .section-subtitle,
+.section--dark .section-subtitle {
+  color: rgba(255,255,255,.8);
+}
+
+/* Línea decorativa bajo el título */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  margin: 14px auto 0;
+}
+
+/* ── Botones reutilizables ───────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 13px 28px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  transition: var(--transition-base);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Botón azul sólido */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  box-shadow: 0 4px 18px rgba(0,168,232,.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,168,232,.45);
+  filter: brightness(1.08);
+}
+
+/* Botón borde blanco (para fondos oscuros) */
+.btn-outline-white {
+  background: transparent;
+  color: var(--color-white);
+  border: 2px solid rgba(255,255,255,.65);
+}
+
+.btn-outline-white:hover {
+  background: rgba(255,255,255,.12);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* Botón borde azul (para fondos blancos) */
+.btn-outline-primary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-outline-primary:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0,168,232,.3);
+}
+
+/* Botón blanco sólido (para fondos azules) */
+.btn-white {
+  background: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Animaciones de entrada con scroll ──────────────────────── */
+
+/* Clase base: elemento invisible esperando animarse */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.from-left {
+  transform: translateX(-36px);
+}
+
+.reveal.from-right {
+  transform: translateX(36px);
+}
+
+/* Cuando el observador detecta visibilidad, añade .visible */
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Retrasos escalonados para cards en fila */
+.reveal.delay-1 { transition-delay: .1s; }
+.reveal.delay-2 { transition-delay: .2s; }
+.reveal.delay-3 { transition-delay: .3s; }
+.reveal.delay-4 { transition-delay: .4s; }
+.reveal.delay-5 { transition-delay: .5s; }
+.reveal.delay-6 { transition-delay: .6s; }
+
+/* ── Divisor de ola SVG ──────────────────────────────────────── */
+.wave-divider {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+}
+
+/* ── Breadcrumb para subpáginas ──────────────────────────────── */
+.page-hero {
+  background: url(/img/fondo-principal.png);
+  background: var(--gradient-dark);
+  color: var(--color-white);
+  padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  /* Burbuja decorativa de fondo */
+  content: '';
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,168,232,.18) 0%, transparent 70%);
+  top: -120px;
+  right: -80px;
+  pointer-events: none;
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(0,168,232,.15);
+  border: 1px solid rgba(0,168,232,.3);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+}
+
+.page-hero__title {
+  font-size: clamp(var(--font-xl), 5vw, var(--font-3xl));
+  font-weight: 800;
+  margin-bottom: var(--space-md);
+  line-height: 1.1;
+}
+
+.page-hero__desc {
+  font-size: var(--font-md);
+  color: rgba(255,255,255,.75);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-sm);
+  color: rgba(255,255,255,.55);
+  margin-bottom: var(--space-lg);
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+  transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-white);
+}
+
+.breadcrumb i {
+  font-size: .7rem;
+}
+
+/* ── Loader de página ────────────────────────────────────────── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+
+.page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-wave {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  height: 40px;
+}
+
+.loader-wave span {
+  display: block;
+  width: 6px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  animation: loaderWave .9s ease-in-out infinite;
+}
+
+.loader-wave span:nth-child(2) { animation-delay: .1s; }
+.loader-wave span:nth-child(3) { animation-delay: .2s; }
+.loader-wave span:nth-child(4) { animation-delay: .3s; }
+.loader-wave span:nth-child(5) { animation-delay: .4s; }
+
+@keyframes loaderWave {
+  0%, 100% { height: 8px;  opacity: .4; }
+  50%       { height: 36px; opacity: 1;  }
+}
+
+.loader-text {
+  margin-top: var(--space-lg);
+  color: rgba(255,255,255,.6);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  letter-spacing: .05em;
+}
+
+/* ── Tarjetas generales ──────────────────────────────────────── */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition-base);
+  border: 1px solid var(--color-border);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.card__body {
+  padding: var(--space-xl);
+}
+
+.card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: rgba(0,168,232,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+  transition: var(--transition-base);
+}
+
+.card:hover .card__icon {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+}
+
+.card__title {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.card__text {
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ── Grid de 3 columnas ──────────────────────────────────────── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+/* ── Badges y etiquetas ──────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.badge--primary {
+  background: rgba(0,168,232,.12);
+  color: var(--color-secondary);
+}
+
+.badge--white {
+  background: rgba(255,255,255,.15);
+  color: var(--color-white);
+}
+
+/* ── Imagen decorativa con efecto flotante ───────────────────── */
+.img-float {
+  animation: floatImg 4s ease-in-out infinite;
+}
+
+@keyframes floatImg {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ── Responsive — puntos de corte ────────────────────────────── */
+@media (max-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid-3,
+  .grid-2 { grid-template-columns: 1fr; }
+
+  .section { padding: var(--space-2xl) 0; }
+
+  .container { padding: 0 var(--space-md); }
+
+  .btn { padding: 11px 22px; }
+}
